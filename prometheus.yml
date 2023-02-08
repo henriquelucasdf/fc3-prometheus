@@ -34,8 +34,7 @@ scrape_configs:
     scrape_interval: 5s
     static_configs:
       - targets:
-          - "app:8181" # Prometheus monitoring itself
-
+          - "app:8181"
 # # Alerting specifies settings related to the Alertmanager.
 # alerting:
 #   alert_relabel_configs:

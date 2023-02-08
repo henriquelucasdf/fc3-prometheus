@@ -16,8 +16,11 @@ services:
     ports:
       - 3000:3000
     container_name: grafana
+    user: '1000'
     depends_on:
       - prometheus
+    volumes:
+      - ./grafana-data:/var/lib/grafana
 
   app:
     build: .
@@ -26,13 +29,3 @@ services:
       - .:/go/src
     ports:
       - 8181:8181
-  # cadvisor:
-  #   image: gcr.io/cadvisor/cadvisor:latest
-  #   container_name: cadvisor
-  #   ports:
-  #     - 8081:8081
-  #   volumes:
-  #     - /:/rootfs:ro
-  #     - /var/run:/var/run:rw
-  #     - /sys:/sys:ro
-  #     - /var/lib/docker/:/var/lib/docker:ro
